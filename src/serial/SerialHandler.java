@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class SerialHandler
 {
-    static final int BAUDRATE = 9600;
+    static final int BAUDRATE = 115200;
     public static void open(SerialPort port)
     {
         port.setBaudRate(BAUDRATE);

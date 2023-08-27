@@ -14,10 +14,13 @@ import java.awt.event.WindowEvent;
 
 public class MainWindow extends Window
 {
+    private static final long DELTA_TIME_MS = 100;
 
     private final ColorPicker colorPicker;
     private final ColorPreview colorPreview;
     private final SerialSelector serialSelector;
+
+    private long startTime = 0;
 
     public MainWindow()
     {
@@ -58,10 +61,17 @@ public class MainWindow extends Window
         panel.add(serialSelector, BorderLayout.SOUTH);
         pack();
         setVisible(true);
+
+        startTime = System.currentTimeMillis();
     }
 
     private void colorPickerHandler()
     {
+        if (System.currentTimeMillis() - startTime < DELTA_TIME_MS)
+            return;
+
+        startTime = System.currentTimeMillis();
+
         Color color = colorPicker.getColor();
         // update color preview
         colorPreview.setColor(color);

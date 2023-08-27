@@ -6,7 +6,6 @@ public class Parser
 {
     public static String colorToString(Color c)
     {
-        // return (c.getRed() + ", " + c.getGreen() + ", " + c.getBlue());
-        return c.getRed() + "";
+        return (c.getRed() + ", " + c.getGreen() + ", " + c.getBlue() + ", " + "0");
     }
 }

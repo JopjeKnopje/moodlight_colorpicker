@@ -4,4 +4,6 @@ using the [jSerialComm](https://github.com/Fazecast/jSerialComm) library.
 
 
 TODO
-- Save color value
+[ ] Save color value.
+[ ] RGBW Support.
+[ ] Dimmer curve.

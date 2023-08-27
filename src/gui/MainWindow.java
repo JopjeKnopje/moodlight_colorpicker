@@ -8,24 +8,32 @@ import java.awt.*;
 public class MainWindow extends Window
 {
     private final JColorChooser colorPicker;
-    private final BorderLayout layout;
 
     public MainWindow()
     {
         super("color picker", new Dimension(800, 600));
         panel.setBackground(Color.GRAY);
-        layout = new BorderLayout();
+
+        BorderLayout layout = new BorderLayout();
         panel.setLayout(layout);
 
         colorPicker = new JColorChooser();
-        colorPicker.setBorder(BorderFactory.createTitledBorder(
+        panel.setBorder(BorderFactory.createTitledBorder(
                                 null,
-                                "Pick led color",
+                                "PICK LED COLOR",
                                 TitledBorder.CENTER,
-                                TitledBorder.TOP
+                                TitledBorder.TOP,
+                                new Font("roboto", Font.BOLD, 18),
+                                new Color(0xFFFF9900)
                                 ));
 
         removeColorPickerPanels();
+
+
+        // Hide the "preview" panel
+        colorPicker.setPreviewPanel(new JPanel());
+
+
 
         panel.add(colorPicker);
         pack();
@@ -34,18 +42,11 @@ public class MainWindow extends Window
 
     private void removeColorPickerPanels()
     {
-        final String[] PANEL_NAMES = { "HSL", "RGB", "CMYK" };
-
-        AbstractColorChooserPanel[] panels = colorPicker.getChooserPanels();
-
-        for (AbstractColorChooserPanel panel : panels)
+        for (AbstractColorChooserPanel panel : colorPicker.getChooserPanels())
         {
-            for (String s : PANEL_NAMES)
-            {
-                if (panel.getDisplayName().equals(s))
+            String name = panel.getDisplayName();
+                if (!name.equals("Swatches") && !name.equals("HSV"))
                     colorPicker.removeChooserPanel(panel);
-            }
         }
     }
-
 }

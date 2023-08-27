@@ -18,7 +18,7 @@ public abstract class Window extends JFrame
         initPanel();
 
         setTitle(title);
-        setResizable(false);
+        setResizable(true);
         panel.setLayout(null);
     }
 

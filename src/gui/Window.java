@@ -11,13 +11,6 @@ public abstract class Window extends JFrame
 
     public Window(String title, Dimension size)
     {
-        try
-        {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e)
-        {
-            e.printStackTrace();
-        }
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(size);
 
@@ -26,7 +19,6 @@ public abstract class Window extends JFrame
 
         setTitle(title);
         setResizable(false);
-
         panel.setLayout(null);
     }
 

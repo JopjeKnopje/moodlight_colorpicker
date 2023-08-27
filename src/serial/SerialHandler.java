@@ -2,14 +2,26 @@ package serial;
 
 import com.fazecast.jSerialComm.SerialPort;
 
+import java.util.Arrays;
+
 
 public class SerialHandler
 {
+    static final int BAUDRATE = 9600;
     public static void open(SerialPort port)
     {
+        port.setBaudRate(BAUDRATE);
         if (!port.openPort())
         {
             System.out.println("failed opening port " + port.toString());
+        }
+    }
+
+    public static void close(SerialPort port)
+    {
+        if (!port.closePort())
+        {
+            System.out.println("failed closing port " + port.toString());
         }
     }
 

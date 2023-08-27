@@ -17,6 +17,7 @@ public class SerialSelector extends JPanel
 
     public SerialSelector()
     {
+        super();
         portSelector = new JComboBox<SerialPortWrapper>();
 
         SerialPort[] ports = SerialPort.getCommPorts();
@@ -25,6 +26,7 @@ public class SerialSelector extends JPanel
         {
             portSelector.addItem(new SerialPortWrapper(p));
         }
+
 
 
         add(portSelector);

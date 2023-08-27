@@ -1,8 +1,10 @@
 package gui;
 
 import gui.components.ColorPicker;
+import gui.components.SerialSelector;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 import java.awt.*;
@@ -10,7 +12,7 @@ import java.awt.*;
 public class MainWindow extends Window
 {
 
-    final ColorPicker colorPicker;
+    private final ColorPicker colorPicker;
 
     public MainWindow()
     {
@@ -18,16 +20,8 @@ public class MainWindow extends Window
 
         BorderLayout layout = new BorderLayout();
 
-        panel.setBackground(Color.GRAY);
+        panel.setBackground(new Color(0xbebebe));
         panel.setLayout(layout);
-        panel.setBorder(BorderFactory.createTitledBorder(
-                                null,
-                                "PICK LED COLOR",
-                                TitledBorder.CENTER,
-                                TitledBorder.TOP,
-                                new Font("roboto", Font.BOLD, 18),
-                                new Color(0xCB7A00)
-                                ));
 
         colorPicker = new ColorPicker();
         colorPicker.getSelectionModel().addChangeListener(e ->
@@ -35,6 +29,9 @@ public class MainWindow extends Window
             Color color = colorPicker.getColor();
             System.out.println(color);
         });
+
+
+        panel.add(new SerialSelector());
 
         panel.add(colorPicker, BorderLayout.PAGE_START);
         pack();

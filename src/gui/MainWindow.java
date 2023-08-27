@@ -1,5 +1,6 @@
 package gui;
 
+import com.fazecast.jSerialComm.SerialPort;
 import gui.components.ColorPicker;
 import gui.components.ColorPreview;
 import gui.components.SerialSelector;
@@ -32,8 +33,12 @@ public class MainWindow extends Window
             @Override
             public void windowClosing(WindowEvent e)
             {
-                if (serialSelector.getOpenedPort() != null)
-                    SerialHandler.close(serialSelector.getOpenedPort());
+                SerialPort port = serialSelector.getOpenedPort();
+                if (port != null)
+                {
+                    SerialHandler.send(port, "0, 0, 0, 0".getBytes());
+                    SerialHandler.close(port);
+                }
                 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             }
         });

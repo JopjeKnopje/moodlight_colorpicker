@@ -26,14 +26,18 @@ public class MainWindow extends Window
                                 TitledBorder.CENTER,
                                 TitledBorder.TOP,
                                 new Font("roboto", Font.BOLD, 18),
-                                new Color(0xFFFF9900)
+                                new Color(0xCB7A00)
                                 ));
 
         colorPicker = new ColorPicker();
+        colorPicker.getSelectionModel().addChangeListener(e ->
+        {
+            Color color = colorPicker.getColor();
+            System.out.println(color);
+        });
 
-        panel.add(colorPicker);
+        panel.add(colorPicker, BorderLayout.PAGE_START);
         pack();
         setVisible(true);
     }
-
 }

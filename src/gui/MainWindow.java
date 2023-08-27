@@ -3,10 +3,11 @@ package gui;
 import gui.components.ColorPicker;
 import gui.components.ColorPreview;
 import gui.components.SerialSelector;
+import serial.Parser;
+import serial.SerialHandler;
 
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.io.Serial;
 
 public class MainWindow extends Window
 {
@@ -32,11 +33,21 @@ public class MainWindow extends Window
         {
             Color color = colorPicker.getColor();
             System.out.println(color);
+            // update color preview
             colorPreview.setColor(color);
+
+            if (serialSelector.getOpenedPort() != null)
+            {
+                // parse color value
+                byte[] data = Parser.colorToString(color).getBytes();
+                // send over serial
+                SerialHandler.send(serialSelector.getOpenedPort(), data);
+            }
         });
 
         colorPreview.setPreferredSize(new Dimension(100, 100));
         serialSelector.setPreferredSize(new Dimension(0, 250));
+
 
 
 
@@ -48,4 +59,5 @@ public class MainWindow extends Window
         pack();
         setVisible(true);
     }
+
 }

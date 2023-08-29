@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="moodlight_colorpicker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/moodlight_colorpicker_jar</output-path>
+    <root id="archive" name="moodlight_colorpicker.jar">
+      <element id="module-output" name="moodlight_colorpicker" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jSerialComm-2.10.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

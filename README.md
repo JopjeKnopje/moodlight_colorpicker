@@ -7,7 +7,7 @@ This software is built using Amazon Corretto 16, you can read about it [here](ht
 
 
 
-TODO
-[ ] Save color value.
-[ ] RGBW Support.
-[ ] Dimmer curve.
+## TODO
+- [ ] Save color value.
+- [ ] RGBW Support.
+- [ ] Dimmer curve.
